@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://byk1progxd8fh"]
+
+[ext_resource type="Script" path="res://Main.cs" id="1_ipnp3"]
+[ext_resource type="Script" path="res://Scripts/PlayerPaddle.cs" id="2_87pge"]
+[ext_resource type="Texture2D" uid="uid://dr4otujfpsfpm" path="res://icon.svg" id="2_8318h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_toofj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atyos"]
+size = Vector2(0.785731, 1.77381)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_is7i6"]
+bg_color = Color(0.440753, 0.581489, 0.951327, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ipnp3")
+
+[node name="PlayerPaddle_old" type="Area2D" parent="."]
+modulate = Color(0, 0, 0.588235, 1)
+position = Vector2(455, 199)
+scale = Vector2(2, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle_old"]
+shape = SubResource("RectangleShape2D_toofj")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(594, 202)
+texture = ExtResource("2_8318h")
+
+[node name="PlayerPaddle" type="CharacterBody2D" parent="."]
+position = Vector2(1059, 210)
+scale = Vector2(1, 2)
+script = ExtResource("2_87pge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerPaddle"]
+position = Vector2(10, 30.5)
+scale = Vector2(25.454, 33.2617)
+shape = SubResource("RectangleShape2D_atyos")
+
+[node name="Panel" type="Panel" parent="PlayerPaddle"]
+offset_right = 20.0
+offset_bottom = 60.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_is7i6")
